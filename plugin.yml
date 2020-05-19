@@ -1,0 +1,9 @@
+main: me.async.customenchants.Main
+version: 0.2
+name: CustomEnchants
+author: Async
+commands:
+    cenc:
+        permission: cenchant
+    cencinfo:
+        permission: enchantinfo 

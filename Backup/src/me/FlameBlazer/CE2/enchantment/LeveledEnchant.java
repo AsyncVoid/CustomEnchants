@@ -1,0 +1,68 @@
+package me.FlameBlazer.CE2.enchantment;
+
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.inventory.ItemStack;
+
+public class LeveledEnchant
+{ 
+	private final Enchantment enc; 
+	private int lvl; 
+	
+	public LeveledEnchant(Enchantment enc, int lvl) {
+		this.enc = enc;
+		this.lvl = lvl;
+	}
+	
+	public Enchantment getEnchantment()
+	{
+		return this.enc;
+	}
+	
+	public int getLevel()
+	{
+		return this.lvl;
+	}
+	
+	public void setLevel(int level)
+	{
+		this.lvl = level;
+	}
+		
+	public void applyToItem(ItemStack is)
+	{
+		this.enc.applyToItem(is, this.lvl);
+	}
+	
+	public String getLore()
+	{
+		return this.enc.getLore(this.lvl);
+	}
+	
+	public void applyToLiving(LivingEntity en)
+	{
+		this.enc.getEffect().applyToLiving(en, this.lvl);
+	}
+	
+	public void removeFromLiving(LivingEntity en)
+	{
+		this.enc.getEffect().removeFromLiving(en, this.lvl);
+	}
+	
+	public void handleDamageEvent(EntityDamageByEntityEvent ev)
+	{
+		this.enc.getEffect().handleDamageEvent(ev, this.lvl);
+	}
+	
+	public void handleProjectileEvent(EntityShootBowEvent ev)
+	{
+		this.enc.getEffect().handleProjectileEvent(ev, this.lvl);
+	}
+	
+	public void handleBreakEvent(BlockBreakEvent ev)
+	{
+		this.enc.getEffect().handleBreakEvent(ev, this.lvl);
+	}
+} 
